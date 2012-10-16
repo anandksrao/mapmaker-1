@@ -7,7 +7,7 @@
     <groupId>org.jason.mapmaker</groupId>
     <artifactId>mapmaker</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1</version>
     <name>GWT Mapmaker</name>
 
     <contributors>
