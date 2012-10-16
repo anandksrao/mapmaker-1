@@ -3,7 +3,7 @@
         xmlns:ui="urn:ui:com.google.gwt.uibinder"
         xmlns:g="urn:import:com.google.gwt.user.client.ui"
         >
-    <g:PopupPanel>
+    <g:PopupPanel title="Mapmaker Help">
         <g:VerticalPanel>
             <g:ScrollPanel ui:field="scrollPanel">
                 <g:VerticalPanel>
@@ -15,12 +15,8 @@
 
                         <h3>Selecting Map Features</h3>
                         <p>Users can select a map and associated features via the "Features" Stack Panel. Note that
-                            borders
-                            must be imported
-                            from the Census Department before they can be displayed. Also, features must be imported
-                            from
-                            the USGS before they
-                            can be displayed on the map.
+                            borders must be imported from the Census Department before they can be displayed. Also,
+                            features must be imported from the USGS before they can be displayed on the map.
                         </p>
 
                         <p>The user must select which type of border they wish to view, then the state (and possibly
