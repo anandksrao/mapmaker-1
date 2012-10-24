@@ -189,8 +189,8 @@ public class ShapefileServiceImpl implements ShapefileService {
             // Create the result list. Set initial capacity size to number of actual points in the geometry to avoid some
             // overhead when dealing with the list. Use LinkedList since we're going to be removing items from
             // various points inside the list during our duplicate check
-            //List<BorderPoint> borderPointList = new LinkedList<BorderPoint>();
-            Set<BorderPoint> borderPointSet = new LinkedHashSet<BorderPoint>(geometry.getNumPoints());
+            List<BorderPoint> borderPoints = new LinkedList<BorderPoint>();
+            //Set<BorderPoint> borderPoints = new LinkedHashSet<BorderPoint>(geometry.getNumPoints());
 
             // cycle through the coordinates to create the border points
             Coordinate[] coordinates = simplifiedGeometry.getCoordinates();
@@ -201,12 +201,13 @@ public class ShapefileServiceImpl implements ShapefileService {
                 bp.setLocation(location);
                 bp.setLat(c.y);
                 bp.setLng(c.x);
-                borderPointSet.add(bp);
+                borderPoints.add(bp);
             }
 
-
             try {
-                borderPointRepository.saveList(new ArrayList<BorderPoint>(borderPointSet));
+                // use the save(Collection obj) to avoid overhead of instantiation
+                borderPointRepository.save(borderPoints);
+                //borderPointRepository.saveList(new ArrayList<BorderPoint>(borderPointSet));
             } catch (Exception e) {
                 throw new ServiceException("saveBorderPoints() threw RepositoryException", e);
             }
