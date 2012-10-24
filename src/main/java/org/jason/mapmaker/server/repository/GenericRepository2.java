@@ -15,6 +15,7 @@
  */
 package org.jason.mapmaker.server.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -40,6 +41,8 @@ public interface GenericRepository2<T> {
     void update(T object);
 
     void delete(T object);
+
+    void save(Collection<T> objects);
 
     void saveList(List<T> objectList);
 
