@@ -15,17 +15,17 @@
  */
 package org.jason.mapmaker.server.repository.hibernate;
 
-import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
-import org.hibernate.SessionFactory;
+import org.apache.log4j.Logger;
+import org.hibernate.*;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Projections;
 import org.jason.mapmaker.server.repository.GenericRepository2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.HibernateTransactionManager;
+import org.springframework.util.StopWatch;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -42,6 +42,7 @@ public class HibernateGenericRepository<T> implements GenericRepository2<T> {
     protected HibernateTransactionManager transactionManager;
     private Class<T> clazz;
 
+    public Logger log = Logger.getLogger(this.getClass());
 
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -113,9 +114,39 @@ public class HibernateGenericRepository<T> implements GenericRepository2<T> {
         sessionFactory.getCurrentSession().delete(object);
     }
 
+    public void save(Collection<T> objects) {
+
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        int i = 1;
+        for (T obj : objects) {
+
+            session.save(obj);
+            //sessionFactory.getCurrentSession().save(obj);
+            i++;
+            if (i % 100 == 0) {
+                session.flush();
+                session.clear();
+                //sessionFactory.getCurrentSession().flush();
+            }
+        }
+
+        tx.commit();
+        session.close();
+
+        stopWatch.stop();
+        log.debug("Persisted " + i + " objects in " + stopWatch.getTotalTimeSeconds() + " seconds");
+
+    }
+
     public void saveList(List<T> objectList) {
 
-        for (T obj: objectList) {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+/*        for (T obj: objectList) {
             try {
                 sessionFactory.getCurrentSession().save(obj);
             } catch (DataIntegrityViolationException ex) {
@@ -124,7 +155,29 @@ public class HibernateGenericRepository<T> implements GenericRepository2<T> {
                 // id number???
                 System.out.println("Caught DataIntegrityViolationException");
             }
+        }*/
+
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        int i = 1;
+        for (T obj : objectList) {
+
+            session.save(obj);
+            //sessionFactory.getCurrentSession().save(obj);
+            i++;
+            if (i % 100 == 0) {
+                session.flush();
+                session.clear();
+                //sessionFactory.getCurrentSession().flush();
+            }
         }
+
+        tx.commit();
+        session.close();
+
+        stopWatch.stop();
+        log.debug("Persisted " + i + " objects in " + stopWatch.getTotalTimeSeconds() + " seconds");
+
 //        Session session = sessionFactory.getCurrentSession();
 //        Transaction tx = session.beginTransaction();
 //        int i = 1;
@@ -133,7 +186,7 @@ public class HibernateGenericRepository<T> implements GenericRepository2<T> {
 //            session.save(obj);
 //            //sessionFactory.getCurrentSession().save(obj);
 //            i++;
-//            if (i % 500 == 0) {
+//            if (i % 100 == 0) {
 //                session.flush();
 //                session.clear();
 //                //sessionFactory.getCurrentSession().flush();
