@@ -417,6 +417,7 @@
                     <i18nMessagesBundle>org.jason.mapmaker.client.Messages</i18nMessagesBundle>
                     <!--<noServer>true</noServer>-->
                     <extraJvmArgs>-XX:MaxPermSize=512m -Xmx512m</extraJvmArgs>
+                    <localWorkers>1</localWorkers>
                 </configuration>
                 <dependencies>
                     <dependency>
