@@ -19,7 +19,9 @@
 
     <properties>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.3.0</gwtVersion>
+        <gwtVersion>2.6.0-rc1</gwtVersion>
+        <!--<gwtVersion>2.3.0</gwtVersion>-->
+
         <gwtp.version>0.6</gwtp.version>
         <spring.version>3.2.5.RELEASE</spring.version>
         <hibernate.version>4.2.7.SP1</hibernate.version>
@@ -65,7 +67,7 @@
     </repositories>
 
     <dependencies>
-<!--        &lt;!&ndash; GWT Dependencies &ndash;&gt;
+        <!-- GWT Dependencies -->
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
@@ -77,7 +79,7 @@
             <artifactId>gwt-user</artifactId>
             <version>${gwtVersion}</version>
             <scope>provided</scope>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>com.google.gwt.inject</groupId>
