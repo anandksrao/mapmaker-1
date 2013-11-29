@@ -22,7 +22,8 @@
         <gwtVersion>2.6.0-rc1</gwtVersion>
         <!--<gwtVersion>2.3.0</gwtVersion>-->
 
-        <gwtp.version>0.6</gwtp.version>
+        <!--<gwtp.version>0.6</gwtp.version>-->
+        <gwtp.version>1.0.3</gwtp.version>
         <spring.version>3.2.5.RELEASE</spring.version>
         <hibernate.version>4.2.7.SP1</hibernate.version>
         <!-- GWT needs at least java 1.5 -->
@@ -92,41 +93,14 @@
             <version>3.0</version>
         </dependency>
         <!-- MVP component -->
-        <!--        <dependency>
-            <groupId>com.gwtplatform</groupId>
-            <artifactId>gwtp-all</artifactId>
-            <version>${gwtp.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.gwtplatform</groupId>
-                    <artifactId>gwtp-crawler</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.gwtplatform</groupId>
-                    <artifactId>gwtp-crawler-service</artifactId>
-                </exclusion>
-            </exclusions>
-            &lt;!&ndash;<scope>provided</scope>&ndash;&gt;
-        </dependency>-->
-
-        <dependency>
-            <groupId>com.gwtplatform</groupId>
-            <artifactId>gwtp-clients-common</artifactId>
-            <version>${gwtp.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-mvp-client</artifactId>
             <version>${gwtp.version}</version>
-
             <scope>provided</scope>
-
         </dependency>
 
-
         <!-- Dispatch component -->
-
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-dispatch-client</artifactId>
@@ -136,28 +110,21 @@
 
         <dependency>
             <groupId>com.gwtplatform</groupId>
-            <!--<artifactId>gwtp-dispatch-server</artifactId>-->
             <artifactId>gwtp-dispatch-server-spring</artifactId>
-            <!--<artifactId>gwtp-dispatch-server-guice</artifactId>-->
+           <!-- <artifactId>gwtp-dispatch-server-guice</artifactId>-->
+            <!-- Or, if you use spring:
+            <artifactId>gwtp-dispatch-server-spring</artifactId> -->
             <version>${gwtp.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.gwtplatform</groupId>
-            <artifactId>gwtp-dispatch-shared</artifactId>
-            <version>${gwtp.version}</version>
-        </dependency>
         <!-- Crawler component -->
-
-        <!--        <dependency>
+        <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-crawler</artifactId>
             <version>${gwtp.version}</version>
-        </dependency>-->
-
+        </dependency>
 
         <!-- Annotation component -->
-
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-processors</artifactId>
@@ -165,14 +132,13 @@
             <scope>provided</scope>
         </dependency>
 
-
         <!-- Tester component -->
-        <!--        <dependency>
+        <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-tester</artifactId>
             <version>${gwtp.version}</version>
             <scope>test</scope>
-        </dependency>-->
+        </dependency>
 
         <!-- Spring -->
         <!-- spring dependencies -->
