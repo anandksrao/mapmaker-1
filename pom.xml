@@ -535,7 +535,6 @@
                 </plugins>
             </build>
         </profile>
-x`
         <profile>
             <id>Hibernate</id>
             <activation>
