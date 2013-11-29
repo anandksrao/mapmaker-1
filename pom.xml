@@ -442,7 +442,7 @@
                     <extraJvmArgs>-XX:MaxPermSize=512m -Xmx512m</extraJvmArgs>
                     <localWorkers>1</localWorkers>
                 </configuration>
-                <dependencies>
+<!--                <dependencies>
                     <dependency>
                         <groupId>com.google.gwt</groupId>
                         <artifactId>gwt-user</artifactId>
@@ -453,7 +453,7 @@
                         <artifactId>gwt-dev</artifactId>
                         <version>${gwtVersion}</version>
                     </dependency>
-                </dependencies>
+                </dependencies>-->
             </plugin>
 
             <!-- Copy static web files before executing gwt:run -->
